@@ -1,0 +1,50 @@
+# Cross-platform line ending policy
+#
+# Projekt se vyvíjí v MSYS2 (Windows) i v Linuxu. Bez explicitního
+# nastavení by git na Windows mohl konvertovat LF na CRLF v worktree
+# (kvůli core.autocrlf=true), zatímco v repozitáři jsou soubory v LF.
+# Tím by vznikaly falešné modifikace ("LF will be replaced by CRLF the
+# next time Git touches it") a inkonzistentní commity napříč platformami.
+#
+# Pravidlo: všechny textové soubory mají LF v repu i ve worktree
+# (eol=lf má vyšší prioritu než core.autocrlf, takže nastavení per-machine
+# už nehraje roli).
+
+# Default: textové soubory s LF na všech platformách (auto-detekce binárních).
+* text=auto eol=lf
+
+# --- Explicit textové soubory (LF) ---
+
+# Zdrojový kód
+*.c     text eol=lf
+*.h     text eol=lf
+
+# Build a configy
+Makefile        text eol=lf
+*.cmake         text eol=lf
+CMakeLists.txt  text eol=lf
+
+# Shell - MUSÍ být LF kvůli MSYS2 bash interpreteru
+*.sh    text eol=lf
+
+# Dokumentace a meta
+*.md    text eol=lf
+*.txt   text eol=lf
+LICENSE text eol=lf
+
+# --- Explicit binární soubory (žádná konverze line endings) ---
+
+*.bin   binary
+*.mzf   binary
+*.zip   binary
+*.tar   binary
+*.tar.gz binary
+*.gz    binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.pdf   binary
+*.exe   binary
+*.a     binary
+*.o     binary
