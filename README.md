@@ -5,9 +5,9 @@
 A family of CLI tools for creating, inspecting and manipulating files
 in the MZF format of Sharp MZ computers (MZ-700, MZ-800, MZ-1500, ...).
 
-> **Project status:** the first public release `bin2mzf-cli v1.0.0`
-> was published on 2026-04-29
-> (see [`docs/en/Changelog.md`](docs/en/Changelog.md)).
+> **Project status:** the current release is `bin2mzf-cli v1.0.1`
+> from 2026-11-10; the first public release `v1.0.0` was published
+> on 2026-04-29 (see [`docs/en/Changelog.md`](docs/en/Changelog.md)).
 
 ## What this project solves
 

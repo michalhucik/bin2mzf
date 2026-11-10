@@ -5,8 +5,9 @@
 Rodina CLI nástrojů pro tvorbu, inspekci a manipulaci souborů
 v MZF formátu počítačů Sharp MZ (MZ-700, MZ-800, MZ-1500, ...).
 
-> **Stav projektu:** první veřejná verze `bin2mzf-cli v1.0.0`
-> uvolněna 2026-04-29 (viz [`docs/cz/Changelog.md`](docs/cz/Changelog.md)).
+> **Stav projektu:** aktuální verze `bin2mzf-cli v1.0.1` z 2026-11-10;
+> první veřejná verze `v1.0.0` uvolněna 2026-04-29
+> (viz [`docs/cz/Changelog.md`](docs/cz/Changelog.md)).
 
 ## Co projekt řeší
 

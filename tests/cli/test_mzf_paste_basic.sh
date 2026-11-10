@@ -44,11 +44,11 @@ test_help() {
     assert_contains "$out" "Usage" "help contains Usage" || return 1
 }
 
-# T3. --version vrací 0 a obsahuje "mzf-paste 0.1.0"
+# T3. --version vrací 0 a obsahuje "mzf-paste 0.1.1"
 test_version() {
     local out
     out=$("$MZF_PASTE" --version 2>&1) || return 1
-    assert_contains "$out" "mzf-paste 0.1.0" "version contains mzf-paste 0.1.0" || return 1
+    assert_contains "$out" "mzf-paste 0.1.1" "version contains mzf-paste 0.1.1" || return 1
     assert_contains "$out" "bin2mzf-cli" "version contains release name" || return 1
 }
 

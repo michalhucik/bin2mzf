@@ -1,6 +1,6 @@
 # mzf-hdr - Modifikace hlavičky MZF souboru
 
-Verze nástroje: 0.1.0. Součást projektu [bin2mzf](https://github.com/michalhucik/bin2mzf/).
+Verze nástroje: 0.1.1. Součást projektu [bin2mzf](https://github.com/michalhucik/bin2mzf/).
 
 > **Upozornění:** Autor projektu neposkytuje žádné záruky a neodpovídá
 > za ztráty ani poškození dat způsobené používáním nástrojů projektu bin2mzf.
@@ -256,7 +256,7 @@ Změna load i exec adresy:
 mzf-hdr -l 0x6000 -e 0x6000 prog.mzf
 ```
 
-Změna typu souboru na BTX (BASIC textový program):
+Změna typu souboru na BTX (program BASICu):
 
 ```bash
 mzf-hdr -t btx prog.mzf

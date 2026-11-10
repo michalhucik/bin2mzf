@@ -1,6 +1,6 @@
 # mzf-paste - Insert or Overwrite Data in MZF
 
-Tool version: 0.1.0. Part of the [bin2mzf](https://github.com/michalhucik/bin2mzf/) project.
+Tool version: 0.1.1. Part of the [bin2mzf](https://github.com/michalhucik/bin2mzf/) project.
 
 > **Disclaimer:** The author provides no warranty and accepts no
 > liability for data loss or damage resulting from use of the bin2mzf

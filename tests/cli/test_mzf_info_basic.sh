@@ -29,7 +29,7 @@ test_help() {
 test_version() {
     local out
     out=$("$MZF_INFO" --version 2>&1) || return 1
-    assert_contains "$out" "0.2.0" "version contains 0.2.0" || return 1
+    assert_contains "$out" "0.2.1" "version contains 0.2.1" || return 1
     assert_contains "$out" "bin2mzf-cli" "version contains release name" || return 1
 }
 

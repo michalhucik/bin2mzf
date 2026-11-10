@@ -9,8 +9,12 @@
 #  make all           -> libs + cli (default)
 #  make install       -> instalace binárek a docs do $(PREFIX) (default /usr/local)
 #  make uninstall     -> odebere instalované soubory z $(PREFIX)
+#  make portable      -> portable/bin2mzf-cli-X.Y.Z/ (binárky + docs .md/.html)
+#  make release       -> portable/bin2mzf-cli-X.Y.Z.zip (ZIP archiv portable bundlu)
+#  make docs-html     -> docs-html/ (HTML dokumentace z docs/*/*.md, vyžaduje
+#                        python3 a Python modul 'markdown')
 #  make help          -> vypíše tento header
-#  make clean         -> vyčistí vše (libs + cli + testy)
+#  make clean         -> vyčistí vše (libs + cli + testy + portable + docs-html)
 # ===========================================================================
 
 # Detekce platformy: MSYS2/MinGW vs Linux/POSIX
@@ -43,11 +47,21 @@ PREFIX  ?= /usr/local
 BINDIR  := $(PREFIX)/bin
 DOCDIR  := $(PREFIX)/share/doc/bin2mzf
 
+# Portable distribuce - adresář s verzí v názvu (po unzipu/extrakci uživatele
+# nevytečou soubory mimo). Verze je převzata z BIN2MZF_CLI_RELEASE_VERSION.
+PORTABLE_CLI_NAME := bin2mzf-cli-$(BIN2MZF_CLI_VERSION)
+PORTABLE_CLI_DIR  := portable/$(PORTABLE_CLI_NAME)
+PORTABLE_CLI_ZIP  := portable/$(PORTABLE_CLI_NAME).zip
+
 JOBS              := $(shell nproc)
 
 .PHONY: all libs cli clean libs-clean cli-clean libs-rebuild cli-rebuild rebuild \
         test test-libs test-cli tests-clean \
-        install uninstall help
+        install uninstall \
+        portable portable-cli portable-cli-clean portable-clean \
+        release release-cli release-clean \
+        docs-html docs-html-clean \
+        help
 
 # --- Implicitní target: knihovny + CLI ---
 
@@ -167,6 +181,96 @@ uninstall:
 	@rm -rf $(DOCDIR)
 	@echo "=== Done ==="
 
+# --- Portable distribuce (CLI bundle) ---
+#
+# Sestaví distribuční balík CLI nástrojů do adresáře s verzí v názvu:
+#   portable/bin2mzf-cli-X.Y.Z/
+#     bin/         - 6 binárek rodiny
+#     docs/cz/     - česká dokumentace (.md), volitelně i .html
+#     docs/en/     - anglická dokumentace (.md), volitelně i .html
+#     README.md, README_cz.md, LICENSE
+#
+# HTML dokumentace není závislostí - pokud adresář docs-html/ existuje
+# (typicky po `make docs-html`), přibalí se. Jinak se přeskočí
+# s informační hláškou. Tím `make portable` funguje i bez python3
+# a Python modulu `markdown`.
+#
+# Portable je alternativa k `make install` - vhodná pro přenos na cizí
+# stroj bez instalace, sdílení s uživateli atd.
+
+portable: portable-cli
+
+portable-cli: cli
+	@echo ""
+	@echo "=== Building portable CLI in $(PORTABLE_CLI_DIR)/ ==="
+	@rm -rf $(PORTABLE_CLI_DIR)
+	@mkdir -p $(PORTABLE_CLI_DIR)/bin
+	@mkdir -p $(PORTABLE_CLI_DIR)/docs/cz
+	@mkdir -p $(PORTABLE_CLI_DIR)/docs/en
+	@cp $(BUILD_CLI_DIR)/bin2mzf$(EXE_SUFFIX) $(PORTABLE_CLI_DIR)/bin/ 2>/dev/null || true
+	@cp $(BUILD_CLI_DIR)/mzf-*$(EXE_SUFFIX) $(PORTABLE_CLI_DIR)/bin/ 2>/dev/null || true
+	@cp docs/cz/*.md $(PORTABLE_CLI_DIR)/docs/cz/ 2>/dev/null || true
+	@cp docs/en/*.md $(PORTABLE_CLI_DIR)/docs/en/ 2>/dev/null || true
+	@cp README.md $(PORTABLE_CLI_DIR)/ 2>/dev/null || true
+	@cp README_cz.md $(PORTABLE_CLI_DIR)/ 2>/dev/null || true
+	@cp LICENSE $(PORTABLE_CLI_DIR)/ 2>/dev/null || true
+	@if [ -d docs-html ]; then \
+		echo "--- Including HTML docs from docs-html/ ---"; \
+		cp docs-html/cz/*.html $(PORTABLE_CLI_DIR)/docs/cz/ 2>/dev/null || true; \
+		cp docs-html/en/*.html $(PORTABLE_CLI_DIR)/docs/en/ 2>/dev/null || true; \
+	else \
+		echo "--- HTML docs not present (run 'make docs-html' to include them) ---"; \
+	fi
+	@echo ""
+	@echo "=== Done: $(PORTABLE_CLI_DIR)/ ==="
+
+portable-cli-clean:
+	@if [ -d $(PORTABLE_CLI_DIR) ]; then rm -rf $(PORTABLE_CLI_DIR); fi
+	@if [ -d portable ] && [ -z "$$(ls -A portable 2>/dev/null)" ]; then rmdir portable; fi
+
+portable-clean: portable-cli-clean
+
+# --- Release archivy (.zip) ---
+#
+# `release-cli` vytvoří portable/bin2mzf-cli-X.Y.Z.zip z portable/bin2mzf-cli-X.Y.Z/.
+# Archiv obsahuje adresář s verzí v názvu (po unzipu nevytečou soubory).
+# Vyžaduje binárku `zip` v PATH (MSYS2 ji má, Linux distribuce typicky taky).
+
+release: release-cli
+
+release-cli: portable-cli
+	@echo ""
+	@echo "=== Creating $(PORTABLE_CLI_ZIP) ==="
+	@rm -f $(PORTABLE_CLI_ZIP)
+	@cd portable && zip -rq $(PORTABLE_CLI_NAME).zip $(PORTABLE_CLI_NAME)
+	@echo "=== Done: $(PORTABLE_CLI_ZIP) ==="
+
+release-clean:
+	@rm -f portable/bin2mzf-cli-*.zip
+	@if [ -d portable ] && [ -z "$$(ls -A portable 2>/dev/null)" ]; then rmdir portable; fi
+
+# --- HTML dokumentace (docs/*/*.md -> docs-html/*/*.html) ---
+#
+# Volitelný target. Generuje samostatné HTML soubory z markdownu pomocí
+# tools/md2html.py. Vyžaduje python3 a Python modul `markdown`:
+#   pip install markdown
+#
+# Výstup zapadá do `make portable` - pokud docs-html/ existuje, portable
+# bundle ho přibalí. Pokud python3 nebo markdown chybí, portable přeskočí
+# HTML s informační hláškou.
+
+DOCS_MD   := $(wildcard docs/*/*.md)
+DOCS_HTML := $(patsubst docs/%.md,docs-html/%.html,$(DOCS_MD))
+
+docs-html: $(DOCS_HTML)
+
+docs-html/%.html: docs/%.md tools/md2html.py
+	@mkdir -p $(dir $@)
+	python3 tools/md2html.py $< $@
+
+docs-html-clean:
+	@if [ -d docs-html ]; then rm -rf docs-html; fi
+
 # --- Help ---
 
 help:
@@ -174,6 +278,6 @@ help:
 
 # --- Čištění ---
 
-clean: libs-clean cli-clean tests-clean
+clean: libs-clean cli-clean tests-clean portable-cli-clean release-clean docs-html-clean
 
 rebuild: clean libs cli

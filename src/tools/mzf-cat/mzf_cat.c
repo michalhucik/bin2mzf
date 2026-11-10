@@ -72,7 +72,7 @@
 #include "tools/common/mzf_io.h"
 
 /** @brief Verze nástroje mzf-cat. */
-#define MZF_CAT_VERSION "0.1.0"
+#define MZF_CAT_VERSION "0.1.1"
 
 /**
  * @brief Volby CLI parsované z argumentů.

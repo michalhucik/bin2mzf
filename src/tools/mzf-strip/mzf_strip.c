@@ -60,7 +60,7 @@
 #include "tools/common/bin2mzf_cli_version.h"
 
 /** @brief Verze nástroje mzf-strip. */
-#define MZF_STRIP_VERSION "0.1.0"
+#define MZF_STRIP_VERSION "0.1.1"
 
 /**
  * @brief Kapacita vstupního bufferu pro načtení MZF.

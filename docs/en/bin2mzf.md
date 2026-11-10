@@ -1,6 +1,6 @@
 # bin2mzf - Build an MZF File from a Binary
 
-Tool version: 0.2.0. Part of the [bin2mzf](https://github.com/michalhucik/bin2mzf/) project.
+Tool version: 0.2.1. Part of the [bin2mzf](https://github.com/michalhucik/bin2mzf/) project.
 
 > **Disclaimer:** The author provides no warranty and accepts no
 > liability for data loss or damage resulting from use of the bin2mzf
@@ -231,7 +231,7 @@ Named MZF with a comment and a custom execution address:
 bin2mzf -n LOADER -l 0x2000 -e 0x2010 -c "Built 2026-04-28" -o loader.mzf loader.bin
 ```
 
-Symbolic type (BTX = BASIC text program):
+Symbolic type (BTX = BASIC program):
 
 ```bash
 bin2mzf -n GAME -t btx -l 0x1200 -o game.mzf game.bin

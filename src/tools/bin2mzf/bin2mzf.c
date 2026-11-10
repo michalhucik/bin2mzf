@@ -96,7 +96,7 @@
 #include "tools/common/cpm_helpers.h"
 
 /** @brief Verze nástroje bin2mzf. */
-#define BIN2MZF_VERSION "0.2.0"
+#define BIN2MZF_VERSION "0.2.1"
 
 /**
  * @brief Volby CLI parsované z argumentů.

@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-11-10
+
+### bin2mzf-cli v1.0.1 - aktualizace knihovny sharpmz_ascii, opravy dokumentace
+
+Údržbové vydání. Chování nástrojů ani jejich volby se nemění.
+
+- Knihovna `sharpmz_ascii` aktualizována z verze 2.1.1 na 2.2.1
+  (převzata z kanonického repozitáře knihovny). Výpis `--lib-versions`
+  nyní uvádí `sharpmz_ascii 2.2.1`.
+- Dokumentace: opraveny popisy typů souboru `BTX`, `BSD`, `BRD` a `RB`
+  v `mzf-info.md` a v příkladech `bin2mzf.md` a `mzf-hdr.md`. Číselné
+  kódy ani symbolické názvy se nemění.
+- Verze nástrojů: `bin2mzf` 0.2.1, `mzf-info` 0.2.1, `mzf-hdr` 0.1.1,
+  `mzf-strip` 0.1.1, `mzf-cat` 0.1.1, `mzf-paste` 0.1.1.
+
 ## 2026-04-29
 
 ### bin2mzf-cli v1.0.0 - první veřejná verze

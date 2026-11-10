@@ -1,6 +1,6 @@
 # mzf-cat - Spojení binárek do MZF souboru
 
-Verze nástroje: 0.1.0. Součást projektu [bin2mzf](https://github.com/michalhucik/bin2mzf/).
+Verze nástroje: 0.1.1. Součást projektu [bin2mzf](https://github.com/michalhucik/bin2mzf/).
 
 > **Upozornění:** Autor projektu neposkytuje žádné záruky
 > a neodpovídá za ztráty ani poškození dat způsobené používáním nástrojů

@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-11-10
+
+### bin2mzf-cli v1.0.1 - sharpmz_ascii library update, documentation fixes
+
+Maintenance release. The behaviour of the tools and their options is
+unchanged.
+
+- The `sharpmz_ascii` library was updated from version 2.1.1 to 2.2.1
+  (taken from the canonical repository of the library). The
+  `--lib-versions` output now reports `sharpmz_ascii 2.2.1`.
+- Documentation: fixed the descriptions of the `BTX`, `BSD`, `BRD` and
+  `RB` file types in `mzf-info.md` and in the examples of `bin2mzf.md`
+  and `mzf-hdr.md`. Numeric codes and symbolic names are unchanged.
+- Tool versions: `bin2mzf` 0.2.1, `mzf-info` 0.2.1, `mzf-hdr` 0.1.1,
+  `mzf-strip` 0.1.1, `mzf-cat` 0.1.1, `mzf-paste` 0.1.1.
+
 ## 2026-04-29
 
 ### bin2mzf-cli v1.0.0 - first public release

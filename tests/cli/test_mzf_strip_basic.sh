@@ -25,7 +25,7 @@ test_help() {
 test_version() {
     local out
     out=$("$MZF_STRIP" --version 2>&1) || return 1
-    assert_contains "$out" "mzf-strip 0.1.0" "version contains 'mzf-strip 0.1.0'" || return 1
+    assert_contains "$out" "mzf-strip 0.1.1" "version contains 'mzf-strip 0.1.1'" || return 1
 }
 
 # T3. --lib-versions

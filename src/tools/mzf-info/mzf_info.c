@@ -64,7 +64,7 @@
 #include "tools/common/text_field.h"
 
 /** @brief Verze nástroje mzf-info. */
-#define MZF_INFO_VERSION "0.2.0"
+#define MZF_INFO_VERSION "0.2.1"
 
 /**
  * @brief Kapacita vstupního bufferu pro načtení MZF.

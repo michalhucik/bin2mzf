@@ -1,6 +1,6 @@
 # mzf-info - MZF File Inspection
 
-Tool version: 0.2.0. Part of the [bin2mzf](https://github.com/michalhucik/bin2mzf/) project.
+Tool version: 0.2.1. Part of the [bin2mzf](https://github.com/michalhucik/bin2mzf/) project.
 
 > **Disclaimer:** The author provides no warranty and accepts no
 > liability for data loss or damage resulting from use of the bin2mzf
@@ -99,10 +99,10 @@ value:
 | `ftype` | Symbol | Description |
 |---------|--------|-------------|
 | 0x01 | `OBJ` | Machine code (object file) |
-| 0x02 | `BTX` | BASIC text program |
-| 0x03 | `BSD` | BASIC data file |
-| 0x04 | `BRD` | BASIC read-after-run data file |
-| 0x05 | `RB` | Read and branch (auto-run) |
+| 0x02 | `BTX` | BASIC program (saved by `SAVE` without the `A` option) |
+| 0x03 | `BSD` | Per the manual, BASIC sequential data or a program in ASCII |
+| 0x04 | `BRD` | BASIC 1Z-016 data file (`WOPEN#` / `PRINT#`) |
+| 0x05 | `RB` | BASIC program in packed form (per period documentation) |
 | 0x22 | `CPM` | CP/M convention (SOKODI CMT.COM) |
 | other | `unknown` | Unrecognized type |
 

@@ -1,6 +1,6 @@
 # bin2mzf - Vytvoření MZF souboru z binárky
 
-Verze nástroje: 0.2.0. Součást projektu [bin2mzf](https://github.com/michalhucik/bin2mzf/).
+Verze nástroje: 0.2.1. Součást projektu [bin2mzf](https://github.com/michalhucik/bin2mzf/).
 
 > **Upozornění:** Autor projektu neposkytuje žádné záruky
 > a neodpovídá za ztráty ani poškození dat způsobené používáním nástrojů
@@ -229,7 +229,7 @@ Pojmenovaný MZF s komentářem a vlastní spouštěcí adresou:
 bin2mzf -n LOADER -l 0x2000 -e 0x2010 -c "Built 2026-04-28" -o loader.mzf loader.bin
 ```
 
-Symbolický typ (BTX = BASIC textový program):
+Symbolický typ (BTX = program BASICu):
 
 ```bash
 bin2mzf -n GAME -t btx -l 0x1200 -o game.mzf game.bin

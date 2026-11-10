@@ -30,6 +30,9 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 # Sada zkopírovaná z ~/projects/mzdisk/src/libs/ (snapshot 2026-04-27).
 # Zdrojový vzor: mzdisk/src/libs/CMakeLists.txt:27-45.
 # Pravidlo: 1:1 kopie, lokální úpravy zakázány (synchronizace s mzdisk).
+# Výjimka: sharpmz_ascii je 1:1 kopie z kanonického repozitáře
+# ~/projects/sharpmz_ascii/ (v2.2.1, commit c381ad0, převzato 2026-11-10);
+# koi8cs_table.h vkládá sharpmz_ascii.c, samostatně se nekompiluje.
 # Závislosti mezi statickými knihovnami se neřeší přes target_link_libraries -
 # linkování zařizuje až konzument (tools/tests) přes -Wl,--start-group.
 

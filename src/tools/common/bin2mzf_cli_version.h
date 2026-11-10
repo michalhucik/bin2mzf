@@ -27,7 +27,7 @@
  * mzf-strip, mzf-cat, mzf-paste). Hodnotu načítá Makefile přes
  * @c awk pro hlášku v @c make install.
  */
-#define BIN2MZF_CLI_RELEASE_VERSION "1.0.0"
+#define BIN2MZF_CLI_RELEASE_VERSION "1.0.1"
 
 /**
  * @brief Jméno release celé rodiny CLI nástrojů bin2mzf.

@@ -40,8 +40,8 @@ test_help() {
 test_version() {
     local out
     out=$("$BIN2MZF" --version 2>&1) || return 1
-    assert_contains "$out" "bin2mzf 0.2.0" "version contains bin2mzf 0.2.0" || return 1
-    assert_contains "$out" "bin2mzf-cli 1.0.0" "version contains bin2mzf-cli 1.0.0" || return 1
+    assert_contains "$out" "bin2mzf 0.2.1" "version contains bin2mzf 0.2.1" || return 1
+    assert_contains "$out" "bin2mzf-cli 1.0.1" "version contains bin2mzf-cli 1.0.1" || return 1
 }
 
 # 4. --lib-versions obsahuje názvy všech knihoven

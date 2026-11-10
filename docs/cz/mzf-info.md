@@ -1,6 +1,6 @@
 # mzf-info - Inspekce MZF souboru
 
-Verze nástroje: 0.2.0. Součást projektu [bin2mzf](https://github.com/michalhucik/bin2mzf/).
+Verze nástroje: 0.2.1. Součást projektu [bin2mzf](https://github.com/michalhucik/bin2mzf/).
 
 > **Upozornění:** Autor projektu neposkytuje žádné záruky a neodpovídá
 > za ztráty ani poškození dat způsobené používáním nástrojů projektu bin2mzf.
@@ -98,10 +98,10 @@ U pole `ftype` se vedle hexa hodnoty vypisuje symbolický název:
 | `ftype` | Symbol | Popis |
 |---------|--------|-------|
 | 0x01 | `OBJ` | Strojový kód (object file) |
-| 0x02 | `BTX` | BASIC textový program |
-| 0x03 | `BSD` | BASIC datový soubor |
-| 0x04 | `BRD` | BASIC read-after-run datový soubor |
-| 0x05 | `RB` | Read and branch (auto-run) |
+| 0x02 | `BTX` | Program BASICu (uložený `SAVE` bez volby `A`) |
+| 0x03 | `BSD` | Podle manuálu sekvenční data BASICu nebo program v ASCII |
+| 0x04 | `BRD` | Datový soubor BASICu 1Z-016 (`WOPEN#` / `PRINT#`) |
+| 0x05 | `RB` | Program BASICu ve sbalené formě (podle dobové dokumentace) |
 | 0x22 | `CPM` | CP/M konvence (SOKODI CMT.COM) |
 | jiné | `unknown` | Nerozpoznaný typ |
 
