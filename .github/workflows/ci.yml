@@ -1,0 +1,71 @@
+# ===========================================================================
+#  CI pro veřejný repozitář bin2mzf
+#
+#  Na každý push do main a na každý pull request sestaví knihovny a CLI
+#  nástroje a spustí `make test` (C unit testy knihoven + CLI integrační
+#  testy) na dvou platformách:
+#    - Linux (ubuntu-latest, systémový GCC a CMake)
+#    - Windows (MSYS2 UCRT64 - stejné prostředí, ve kterém vznikají
+#      release binárky)
+#
+#  Soubor žije v soukromém repozitáři a do veřejného se přenáší skriptem
+#  devtools/sync-github.sh (položka ".github/" v SYNC_ITEMS).
+# ===========================================================================
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  linux:
+    name: Linux (GCC)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show tool versions
+        run: |
+          gcc --version
+          cmake --version
+          make --version
+
+      - name: Build and test
+        run: make test
+
+  windows:
+    name: Windows (MSYS2 UCRT64)
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v4
+
+      # gettext-runtime dodává libintl, kterou CMake na Windows linkuje
+      # (příprava na lokalizaci). diffutils dodává cmp pro CLI testy.
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: true
+          install: >-
+            make
+            diffutils
+            mingw-w64-ucrt-x86_64-gcc
+            mingw-w64-ucrt-x86_64-cmake
+            mingw-w64-ucrt-x86_64-gettext-runtime
+
+      - name: Show tool versions
+        run: |
+          gcc --version
+          cmake --version
+          make --version
+
+      - name: Build and test
+        run: make test
