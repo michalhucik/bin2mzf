@@ -46,7 +46,7 @@ bin2mzf --help
 
 | Option | Values | Default | Description |
 |--------|--------|---------|-------------|
-| `-t`, `--type TYPE` | 0x01..0xFF or `obj`, `btx`, `bsd`, `brd`, `rb` | `obj` (0x01) | File type |
+| `-t`, `--type TYPE` | 0x00..0xFF or `obj`, `btx`, `bsd`, `brd`, `rb` | `obj` (0x01) | File type |
 | `-e`, `--exec-addr ADDR` | 0..0xFFFF | equal to `--load-addr` | Z80 execution address |
 | `-c`, `--comment TEXT` | text (max 104 B after conversion) | - | Comment text (longer is truncated) |
 | `-i`, `--input FILE` | path | - | Input binary file (alternative to positional argument) |

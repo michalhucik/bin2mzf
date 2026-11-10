@@ -49,7 +49,7 @@ mzf-cat --help
 
 | Volba | Hodnoty | Výchozí | Popis |
 |-------|---------|---------|-------|
-| `-t`, `--type TYPE` | 0x01..0xFF nebo `obj`, `btx`, `bsd`, `brd`, `rb` | `obj` (0x01) | Typ souboru |
+| `-t`, `--type TYPE` | 0x00..0xFF nebo `obj`, `btx`, `bsd`, `brd`, `rb` | `obj` (0x01) | Typ souboru |
 | `-c`, `--comment TEXT` | text (max 104 B po konverzi) | - | Komentář (delší se ořízne) |
 | `-e`, `--exec-addr ADDR` | 0..0xFFFF | rovno `--load-addr` | Z80 spouštěcí adresa |
 

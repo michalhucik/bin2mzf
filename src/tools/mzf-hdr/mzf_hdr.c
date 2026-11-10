@@ -159,7 +159,7 @@ static void print_usage ( FILE *out ) {
         "command line preserves the corresponding header field from INPUT.\n"
         "\n"
         "Options (header fields):\n"
-        "  -t, --type TYPE            File type: 0x01..0xff or symbolic\n"
+        "  -t, --type TYPE            File type: 0x00..0xff or symbolic\n"
         "                             (obj, btx, bsd, brd, rb).\n"
         "  -n, --name NAME            File name (max 16 chars after charset conversion).\n"
         "  -l, --load-addr ADDR       Z80 load address (decimal or 0x-prefixed hex).\n"

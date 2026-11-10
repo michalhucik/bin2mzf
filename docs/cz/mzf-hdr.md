@@ -48,7 +48,7 @@ stdin vstup.
 
 | Volba | Hodnoty | Výchozí | Popis |
 |-------|---------|---------|-------|
-| `-t`, `--type TYPE` | 0x01..0xFF nebo `obj`, `btx`, `bsd`, `brd`, `rb` | zachová z INPUT | Typ souboru |
+| `-t`, `--type TYPE` | 0x00..0xFF nebo `obj`, `btx`, `bsd`, `brd`, `rb` | zachová z INPUT | Typ souboru |
 | `-n`, `--name NAME` | text (max 16 B po konverzi) | zachová z INPUT | Jméno v hlavičce MZF |
 | `-c`, `--comment TEXT` | text (max 104 B po konverzi) | zachová z INPUT | Komentář (delší se ořízne) |
 | `--cmnt-bin FILE` | cesta | zachová z INPUT | Načte raw 104 B z FILE do pole `cmnt` |

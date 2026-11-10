@@ -160,7 +160,7 @@ static void print_usage ( FILE *out ) {
         "  -l, --load-addr ADDR       Z80 load address (e.g. 0x1200 or 4608).\n"
         "\n"
         "Optional options:\n"
-        "  -t, --type TYPE            File type: 0x01..0xff or symbolic\n"
+        "  -t, --type TYPE            File type: 0x00..0xff or symbolic\n"
         "                             (obj, btx, bsd, brd, rb). Default: 0x01 (obj).\n"
         "  -e, --exec-addr ADDR       Z80 execution address. Default: equal to load-addr.\n"
         "  -c, --comment TEXT         Comment text (max 104 chars, longer is truncated).\n"

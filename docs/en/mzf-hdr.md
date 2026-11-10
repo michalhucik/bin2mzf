@@ -49,7 +49,7 @@ via the positional argument (consistent with `mzf-info` and
 
 | Option | Values | Default | Description |
 |--------|--------|---------|-------------|
-| `-t`, `--type TYPE` | 0x01..0xFF or `obj`, `btx`, `bsd`, `brd`, `rb` | preserved from INPUT | File type |
+| `-t`, `--type TYPE` | 0x00..0xFF or `obj`, `btx`, `bsd`, `brd`, `rb` | preserved from INPUT | File type |
 | `-n`, `--name NAME` | text (max 16 B after conversion) | preserved from INPUT | File name in the MZF header |
 | `-c`, `--comment TEXT` | text (max 104 B after conversion) | preserved from INPUT | Comment text (longer is truncated) |
 | `--cmnt-bin FILE` | path | preserved from INPUT | Read raw 104 B from FILE into the `cmnt` field |
