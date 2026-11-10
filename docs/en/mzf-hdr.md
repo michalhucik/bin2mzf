@@ -125,6 +125,22 @@ The `--upper` option is applied BEFORE charset conversion. It maps
 `a-z` to `A-Z` and acts the same on both `--name` and `--comment`.
 Default is off.
 
+Both `--name` and `--comment` accept C-style escape sequences, the same
+as in `bin2mzf`:
+
+| Sequence | Meaning |
+|----------|---------|
+| `\\` | Byte `\` (0x5C) |
+| `\n` | Byte LF (0x0A) |
+| `\r` | Byte CR (0x0D) |
+| `\t` | Byte TAB (0x09) |
+| `\xNN` | Arbitrary byte in hex |
+
+If the field contains any escape sequence, both `--charset` and
+`--upper` are turned off FOR THAT FIELD (it behaves as `--charset
+none`). Granularity is per-field - an escape in `--name` does not
+disable conversion of `--comment` and vice versa.
+
 > **Caution:** In CP/M mode (`--cpm`) the `--charset` option is
 > mutually exclusive with the preset - the combination is a hard
 > error. A `-c` comment in CP/M mode is internally processed as

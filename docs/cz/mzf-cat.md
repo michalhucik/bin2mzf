@@ -44,7 +44,6 @@ mzf-cat --help
 |-------|---------|---------|-------|
 | `-n`, `--name NAME` | text (max 16 B po konverzi) | - | Jméno zapsané do hlavičky MZF |
 | `-l`, `--load-addr ADDR` | 0..0xFFFF | - | Z80 startovací adresa (decimal nebo 0x-prefix) |
-| `-o`, `--output FILE` | cesta | stdout | Výstupní MZF soubor |
 
 ### Volby - hlavička
 
@@ -71,11 +70,17 @@ mzf-cat --help
 | `-C`, `--charset MODE` | `eu`, `jp`, `utf8-eu`, `utf8-jp`, `none` | `eu` | Znaková sada pro `--name` a `--comment` |
 | `--upper` | - | off | Před konverzí znaků převede a-z na A-Z |
 
+### Volby - výstup
+
+| Volba | Hodnoty | Výchozí | Popis |
+|-------|---------|---------|-------|
+| `-o`, `--output FILE` | cesta | stdout | Výstupní MZF soubor (volitelné; bez `-o` se MZF zapíše na stdout) |
+
 ### Volby - info
 
 | Volba | Hodnoty | Výchozí | Popis |
 |-------|---------|---------|-------|
-| `--version` | - | - | Vypíše verzi nástroje a skončí |
+| `-V`, `--version` | - | - | Vypíše verzi nástroje a skončí |
 | `--lib-versions` | - | - | Vypíše verze linkovaných knihoven a skončí |
 | `-h`, `--help` | - | - | Vypíše nápovědu a skončí |
 
@@ -265,7 +270,7 @@ mzf-cat -n LOADER -l 0xD400 -o loader.mzf ccp.bin bdos.bin && mzf-info loader.mz
 
 | Offset | Velikost | Pole | Popis |
 |--------|----------|------|-------|
-| 0x00 | 1 | `ftype` | Typ souboru (0x01 OBJ, 0x02 BTX, 0x03 BSD, 0x04 BRD, 0x05 RB) |
+| 0x00 | 1 | `ftype` | Typ souboru (0x01 OBJ, 0x02 BTX, 0x03 BSD, 0x04 BRD, 0x05 RB, 0x22 CPM) |
 | 0x01 | 16 | `fname.name` | Jméno (Sharp MZ ASCII) |
 | 0x11 | 1 | `terminator` | Terminátor jména (vždy 0x0D) |
 | 0x12 | 2 | `fsize` | Velikost těla v bajtech (LE) |

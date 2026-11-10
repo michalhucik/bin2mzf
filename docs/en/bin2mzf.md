@@ -64,12 +64,17 @@ bin2mzf --help
 | `--cpm-name NAME` | max 8 ASCII | - | CP/M filename (requires `--cpm`) |
 | `--cpm-ext EXT` | max 3 ASCII | `COM` | CP/M extension (requires `--cpm`) |
 | `--cpm-attr LIST` | `ro`, `sys`, `arc` (any combination) | - | CP/M attributes (requires `--cpm`) |
-| `--version` | - | - | Print tool version and exit |
-| `--lib-versions` | - | - | Print linked library versions and exit |
+| `-V`, `--version` | - | - | Print tool version and exit |
+| `-L`, `--lib-versions` | - | - | Print linked library versions and exit |
 | `-h`, `--help` | - | - | Print help and exit |
 
 Numeric values accept decimal or hexadecimal with `0x` prefix
 (for example `0x1200` = `4608`).
+
+All options must precede the positional `INPUT` argument (the optstring
+is POSIX-strict, leading `+`). A command like
+`bin2mzf input.bin -n NAME -l 0x1200` fails with
+"too many positional arguments".
 
 ### Charset conversion details
 
@@ -288,7 +293,7 @@ mzf-info foo.mzf
 
 | Offset | Size | Field | Description |
 |--------|------|-------|-------------|
-| 0x00 | 1 | `ftype` | File type (0x01 OBJ, 0x02 BTX, 0x03 BSD, 0x04 BRD, 0x05 RB) |
+| 0x00 | 1 | `ftype` | File type (0x01 OBJ, 0x02 BTX, 0x03 BSD, 0x04 BRD, 0x05 RB, 0x22 CPM) |
 | 0x01 | 16 | `fname.name` | Name (Sharp MZ ASCII) |
 | 0x11 | 1 | `terminator` | Name terminator (always 0x0D) |
 | 0x12 | 2 | `fsize` | Body size in bytes (LE) |

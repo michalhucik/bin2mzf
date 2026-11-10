@@ -250,7 +250,7 @@ mzf-info target.mzf && mzf-paste --at 0x100 patch.bin target.mzf && mzf-info tar
 
 | Offset | Size | Field | Description |
 |--------|------|-------|-------------|
-| 0x00 | 1 | `ftype` | File type (0x01 OBJ, 0x02 BTX, 0x03 BSD, 0x04 BRD, 0x05 RB) |
+| 0x00 | 1 | `ftype` | File type (0x01 OBJ, 0x02 BTX, 0x03 BSD, 0x04 BRD, 0x05 RB, 0x22 CPM) |
 | 0x01 | 16 | `fname.name` | Name (Sharp MZ ASCII) |
 | 0x11 | 1 | `terminator` | Name terminator (always 0x0D) |
 | 0x12 | 2 | `fsize` | Body size in bytes (LE) |

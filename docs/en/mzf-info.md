@@ -51,12 +51,17 @@ mzf-info --help
 | `--validate` | - | off | Quiet mode; exit 0 if MZF is valid, 1 otherwise |
 | `--no-cpm-decode` | - | decoding enabled | Disable CP/M decoding when `ftype == 0x22` |
 | `--format MODE` | `text`, `json`, `csv` | `text` | Output format |
-| `--version`, `-V` | - | - | Print tool version and exit |
+| `-V`, `--version` | - | - | Print tool version and exit |
 | `--lib-versions` | - | - | Print linked library versions and exit |
 | `-h`, `--help` | - | - | Print help and exit |
 
 Numeric values (`--offset`, `--length`) accept decimal or hexadecimal
 with `0x` prefix (for example `0x100` = `256`).
+
+All options must precede the positional `INPUT.mzf` argument (the
+optstring is POSIX-strict, leading `+`). A command like
+`mzf-info file.mzf --header-only` fails with
+"too many positional arguments".
 
 The `--header-only`, `--body-only` and `--validate` options are mutually
 exclusive. `--validate` additionally cannot be combined with `--hexdump`.

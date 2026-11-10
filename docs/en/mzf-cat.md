@@ -44,7 +44,6 @@ mzf-cat --help
 |--------|--------|---------|-------------|
 | `-n`, `--name NAME` | text (max 16 B after conversion) | - | File name written into the MZF header |
 | `-l`, `--load-addr ADDR` | 0..0xFFFF | - | Z80 load address (decimal or 0x-prefixed) |
-| `-o`, `--output FILE` | path | stdout | Output MZF file |
 
 ### Header options
 
@@ -71,11 +70,17 @@ mzf-cat --help
 | `-C`, `--charset MODE` | `eu`, `jp`, `utf8-eu`, `utf8-jp`, `none` | `eu` | Charset for `--name` and `--comment` |
 | `--upper` | - | off | Uppercase a-z to A-Z before charset conversion |
 
+### Output options
+
+| Option | Values | Default | Description |
+|--------|--------|---------|-------------|
+| `-o`, `--output FILE` | path | stdout | Output MZF file (optional; without `-o` the MZF is written to stdout) |
+
 ### Info options
 
 | Option | Values | Default | Description |
 |--------|--------|---------|-------------|
-| `--version` | - | - | Print tool version and exit |
+| `-V`, `--version` | - | - | Print tool version and exit |
 | `--lib-versions` | - | - | Print linked library versions and exit |
 | `-h`, `--help` | - | - | Print help and exit |
 
@@ -268,7 +273,7 @@ mzf-cat -n LOADER -l 0xD400 -o loader.mzf ccp.bin bdos.bin && mzf-info loader.mz
 
 | Offset | Size | Field | Description |
 |--------|------|-------|-------------|
-| 0x00 | 1 | `ftype` | File type (0x01 OBJ, 0x02 BTX, 0x03 BSD, 0x04 BRD, 0x05 RB) |
+| 0x00 | 1 | `ftype` | File type (0x01 OBJ, 0x02 BTX, 0x03 BSD, 0x04 BRD, 0x05 RB, 0x22 CPM) |
 | 0x01 | 16 | `fname.name` | Name (Sharp MZ ASCII) |
 | 0x11 | 1 | `terminator` | Name terminator (always 0x0D) |
 | 0x12 | 2 | `fsize` | Body size in bytes (LE) |

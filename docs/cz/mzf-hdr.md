@@ -123,6 +123,21 @@ Volba `--upper` se aplikuje PŘED konverzí znakové sady. Převede
 `a-z` na `A-Z` a působí stejně na `--name` i `--comment`. Výchozí
 stav je vypnuto.
 
+V `--name` i `--comment` lze použít C-style escape sekvence, stejně
+jako u `bin2mzf`:
+
+| Sekvence | Význam |
+|----------|--------|
+| `\\` | Bajt `\` (0x5C) |
+| `\n` | Bajt LF (0x0A) |
+| `\r` | Bajt CR (0x0D) |
+| `\t` | Bajt TAB (0x09) |
+| `\xNN` | Libovolný bajt v hex |
+
+Pokud pole obsahuje libovolnou escape sekvenci, `--charset` i `--upper`
+se pro DANÉ pole vypnou (chovají se jako `--charset none`). Granularita
+je per-pole - escape v `--name` nevypne konverzi v `--comment` a naopak.
+
 > **Pozor:** V CP/M módu (`--cpm`) je `--charset` vzájemně výlučný
 > s presetem - kombinace skončí tvrdou chybou. Komentář přes `-c`
 > v CP/M módu se interně zpracuje jako `--charset none`.

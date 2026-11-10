@@ -51,12 +51,17 @@ mzf-info --help
 | `--validate` | - | off | Tichý režim; exit 0 pokud je MZF validní, jinak 1 |
 | `--no-cpm-decode` | - | dekódování zapnuto | Vypne CP/M dekódování při `ftype == 0x22` |
 | `--format MODE` | `text`, `json`, `csv` | `text` | Výstupní formát |
-| `--version`, `-V` | - | - | Vypíše verzi nástroje a skončí |
+| `-V`, `--version` | - | - | Vypíše verzi nástroje a skončí |
 | `--lib-versions` | - | - | Vypíše verze linkovaných knihoven a skončí |
 | `-h`, `--help` | - | - | Vypíše nápovědu a skončí |
 
 Číselné hodnoty (`--offset`, `--length`) přijímají decimal i
 hexadecimal s prefixem `0x` (např. `0x100` = `256`).
+
+Všechny volby musí předcházet pozičnímu argumentu `INPUT.mzf`
+(optstring je POSIX-strict, `+` na začátku). Příkaz ve formě
+`mzf-info soubor.mzf --header-only` skončí chybou
+"too many positional arguments".
 
 Volby `--header-only`, `--body-only` a `--validate` jsou vzájemně
 výlučné. Volba `--validate` se navíc nesnáší s `--hexdump`. Volby

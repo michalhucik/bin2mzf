@@ -64,12 +64,17 @@ bin2mzf --help
 | `--cpm-name NAME` | max 8 ASCII | - | Jméno v CP/M (vyžaduje `--cpm`) |
 | `--cpm-ext EXT` | max 3 ASCII | `COM` | Přípona v CP/M (vyžaduje `--cpm`) |
 | `--cpm-attr LIST` | `ro`, `sys`, `arc` (libovolná kombinace) | - | CP/M atributy (vyžaduje `--cpm`) |
-| `--version` | - | - | Vypíše verzi nástroje a skončí |
-| `--lib-versions` | - | - | Vypíše verze linkovaných knihoven a skončí |
+| `-V`, `--version` | - | - | Vypíše verzi nástroje a skončí |
+| `-L`, `--lib-versions` | - | - | Vypíše verze linkovaných knihoven a skončí |
 | `-h`, `--help` | - | - | Vypíše nápovědu a skončí |
 
 Číselné hodnoty přijímají decimal i hexadecimal s prefixem `0x`
 (např. `0x1200` = `4608`).
+
+Všechny volby musí předcházet pozičnímu argumentu `INPUT` (optstring
+je POSIX-strict, `+` na začátku). Příkaz ve formě
+`bin2mzf input.bin -n NAME -l 0x1200` skončí chybou
+"too many positional arguments".
 
 ### Podrobnosti ke konverzi znakové sady
 
@@ -286,7 +291,7 @@ mzf-info foo.mzf
 
 | Offset | Velikost | Pole | Popis |
 |--------|----------|------|-------|
-| 0x00 | 1 | `ftype` | Typ souboru (0x01 OBJ, 0x02 BTX, 0x03 BSD, 0x04 BRD, 0x05 RB) |
+| 0x00 | 1 | `ftype` | Typ souboru (0x01 OBJ, 0x02 BTX, 0x03 BSD, 0x04 BRD, 0x05 RB, 0x22 CPM) |
 | 0x01 | 16 | `fname.name` | Jméno (Sharp MZ ASCII) |
 | 0x11 | 1 | `terminator` | Terminátor jména (vždy 0x0D) |
 | 0x12 | 2 | `fsize` | Velikost těla v bajtech (LE) |
