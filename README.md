@@ -1,5 +1,7 @@
 # bin2mzf
 
+[![CI](https://github.com/michalhucik/bin2mzf/actions/workflows/ci.yml/badge.svg)](https://github.com/michalhucik/bin2mzf/actions/workflows/ci.yml)
+
 *Tento dokument v [češtině](README_cz.md).*
 
 A family of CLI tools for creating, inspecting and manipulating files

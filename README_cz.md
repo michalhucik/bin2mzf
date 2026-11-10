@@ -1,5 +1,7 @@
 # bin2mzf
 
+[![CI](https://github.com/michalhucik/bin2mzf/actions/workflows/ci.yml/badge.svg)](https://github.com/michalhucik/bin2mzf/actions/workflows/ci.yml)
+
 *Read this in [English](README.md).*
 
 Rodina CLI nástrojů pro tvorbu, inspekci a manipulaci souborů
